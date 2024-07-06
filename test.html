@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BITISAN Website</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                color: #FFF;
+                font-family: "Montserrat", sans-serif;
+                overflow: hidden;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            h2 {
+                font-size: 4rem;
+            }
+
+            h4 {
+                font-size: 1.3rem;
+                border: 4px solid #FFF;
+                padding: 0.5rem 1rem;
+            }
+
+            section,
+            header,
+            footer {
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                overflow: hidden;
+            }
+
+            nav {
+                position: sticky;
+                top: 0;
+                width: 100%;
+                z-index: 4; /* Ensure the nav stays on top */
+            }
+
+            nav ul {
+                list-style: none;
+                display: flex;
+                justify-content: center;
+                margin: 0;
+                padding: 10px 0;
+            }
+
+            nav ul li {
+                margin: 0 50px;
+                transition: background-color 0.3s ease; /* Smooth transition for the background color */
+            }
+
+            nav ul li a {
+                text-decoration: none;
+                color: #003a06;
+                font-weight: bold;
+                font-size: 1.2em;
+                padding: 10px; /* Add padding to the anchor to make the hover area larger */
+                display: block; /* Make the anchor a block element to cover the entire li */
+            }
+
+            nav ul li a:hover {
+                border-radius: 30px;
+                border: #003a06;
+                background-color: rgba(255, 255, 255, 0.944); /* Change this to your desired background color */
+            }
+
+            .active .container {
+                opacity: 1;
+            }
+
+            section:nth-child(1) {
+                background: #A7FFE4;
+                background: -webkit-linear-gradient(to right, #A7FFE4, #3CBA94);
+                background: linear-gradient(to right, #A7FFE4, #3CBA94); 
+            }
+
+            section:nth-child(2) {
+                background: #A7FFE4;
+                background: -webkit-linear-gradient(to right, #A7FFE4, #3CBA94);
+                background: linear-gradient(to right, #A7FFE4, #3CBA94); 
+            }
+
+            section:nth-child(3) {
+                background: #141E30;
+                background: -webkit-linear-gradient(to right, #FFFFFF, #AFAFAF);
+                background: linear-gradient(to right, #FFFFFF, #AFAFAF);
+            }
+
+            section:nth-child(4) {
+                background: #a73737; 
+                background: -webkit-linear-gradient(116.71deg, #BDADFC, #03000F); 
+                background: linear-gradient(116.71deg, #BDADFC, #03000F);
+            }
+            
+            section:nth-child(5) {
+                background: #1e130c; 
+                background: -webkit-linear-gradient(to right, #3CBA94, #006383);
+                background: linear-gradient(to right, #3CBA94, #006383); 
+            }
+
+            footer {
+                background: #1e130c; 
+                background: -webkit-linear-gradient(to right, #3CBA94, #006383);
+                background: linear-gradient(to right, #3CBA94, #006383); 
+            }
+
+            .mouse {
+                position: absolute;
+                bottom: 4%;
+                left: 50%;
+                cursor: ns-resize;
+                transform: translateX(-50%);
+            }
+
+            .mouse-shape {
+                position: relative;
+                display: block;
+                width: 35px;
+                height: 65px;
+                margin: 0 auto 15px;
+                border: 3px solid #FFF;
+                border-radius: 22px;
+            }
+
+            .mouse-animation {
+                position: absolute;
+                display: block;
+                top: 25%;
+                left: 50%;
+                width: 8px;
+                height: 8px;
+                background: #FFF;
+                border-radius: 50%;
+                transform: translate(-50%, -25%);
+                animation: ball-scroll 2s linear infinite;
+            }
+
+            .mouse-msg {
+                font-size: .8rem;
+            }
+
+            @keyframes ball-scroll {
+                0% {
+                    opacity: 1;
+                    top: 25%;
+                }
+                20% {
+                    opacity: 1;
+                    top: 50%;
+                }
+                50% {
+                    opacity: 0;
+                    top: 75%;
+                }
+                100% {
+                    opacity: 0;
+                    top: 25%;
+                }
+            }
+
+            .hero {
+                position: relative;
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .hero-content {
+                position: absolute;
+                width: 722px;
+                height: 362px;
+                left: -483px;
+                top: -261px;
+                text-align: left;
+                font-family: 'Black Han Sans';
+                font-style: normal;
+                font-weight: 1000;
+                font-size: 97px;
+                line-height: 0px;
+                color: #404040;
+                z-index: 1;
+            }
+
+
+            .vector {
+                position: absolute;
+                width: 936.5px;
+                height: 692px;
+                left: -166px;
+                top: -387px;
+                background: #D9D9D9;
+                border: 1px solid #D9D9D9;
+                clip-path: polygon(51.1% 100.3%, 100.1% 0%, 0% 0%);        
+            }
+
+            .clock-tower {
+                position: absolute;
+                width: 605px;
+                height: 754px;
+                left: -29px;
+                top: -368px;
+            }
+
+            #pilani-board{
+                position: absolute;
+                width: 382.34px;
+                height: 381.82px;
+                left: 883px;
+                top: 891px;
+            }
+
+            #goa-board{
+                position: absolute;
+                width: 382.34px;
+                height: 381.82px;
+                left: 668px;
+                top: 1089px;
+            }
+
+            #hyderabad-board{
+                position: absolute;
+                width: 382.34px;
+                height: 381.82px;
+                left: 1071px;
+                top: 1103px;
+            }
+
+            #amit-trivedi{
+                position: absolute;
+                width: 464.38px;
+                height: 505px;
+                left: 957px;
+                top: 1886px;
+                background: url(.png);
+            }
+
+            .vector2{
+                position: absolute;
+                width: 0.6px;
+                height: 157.54px;
+                left: 401px;
+                top: 1535px;
+                transform: rotate(0.7deg);
+            }
+
+            .vector3{
+                position: absolute;
+                width: 0.6px;
+                height: 10.54px;
+                left: -21px;
+                top: 1565px;
+                transform: rotate(0.05deg);
+            }
+            .virtual-tour{
+                position: absolute;
+                width: 241px;
+                height: 55px;
+                left: 661px;
+                top: 2071px;
+                background: #66D5B4;
+                border: 3px solid #001610;
+                box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 40px;
+            }
+
+            .virtual-tour a{
+                position: absolute;
+                width: 254px;
+                height: 50px;
+                left: -1px;
+                top: 7px;
+                font-family: 'Black Han Sans';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 17px;
+                line-height: 34px;
+                letter-spacing: 0.12em;
+                color: #000000;
+            }
+
+            .analysis-button{
+                position: absolute;
+                width: 250px;
+                height: 54px;
+                left: 642px;
+                top: 3029px;
+                background: #66D5B4;
+                border: 3px solid #001610;
+                box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 40px;
+            }
+
+            .analysis-button a{
+                position: absolute;
+                width: 257px;
+                height: 50px;
+                left: 1px;
+                font-family: 'Black Han Sans';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 48px;
+                letter-spacing: 0.12em;
+                color: #000000;
+            }
+
+            .graph{
+                position: absolute;
+                width: 300px;
+                height: 500px;
+                left: 755px;
+                top: 2503px;
+            }
+
+            .analysis-text{
+                position: absolute;
+                width: 100px;
+                height: 500px;
+                left: 268px;
+                top: 2561px;
+            }
+
+            .analysis-text p{
+                color: #ffffff;
+                font-family: Druk Wide Bold;
+                font-size: 5rem;
+                font-style: normal;
+                font-weight: 900;
+                line-height: 1px;
+            }
+
+            .shirsh-profile-container{
+                box-sizing: border-box;
+                position: absolute;
+                width: 360px;
+                height: 421px;
+                left: 289px;
+                top: 3471px;
+                background: rgba(154, 228, 244, 0.44);
+                border: 4px solid #016683;
+                border-radius: 40px;
+            }
+
+            
+            .sehaj-profile-container{
+                box-sizing: border-box;
+                position: absolute;
+                width: 360px;
+                height: 421px;
+                right: 340px;
+                top: 3471px;
+                background: rgba(154, 228, 244, 0.44);
+                border: 4px solid #016683;
+                border-radius: 40px;
+            }
+
+            .sub-div-sehaj{
+                box-sizing: border-box;
+                position: absolute;
+                width: 319px;
+                height: 252px;
+                left: 18px;
+                top: 97px;
+                background: #0C738B;
+                border: 2px solid #FFFFFF;
+                border-radius: 50px;
+            }
+
+            .sub-div-shirsh{
+                box-sizing: border-box;
+                position: absolute;
+                width: 319px;
+                height: 252px;
+                left: 18px;
+                top: 97px;
+                background: #0C738B;
+                border: 2px solid #FFFFFF;
+                border-radius: 50px;
+            }
+
+            .sub-div-shirsh img{
+                position: absolute;
+                width: 243.77px;
+                height: 331.03px;
+                left: 37px;
+                top: -282px;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Fresher 2024</a></li>
+                <li><a href="#">Life at BITS</a></li>
+                <li><a href="#">BITSAT Cutoff Prediction</a></li>
+                <li><a href="#">Meet Your Seniors</a></li>
+            </ul>
+        </nav>
+        <section>
+            <div class="container">
+                <div class="hero">
+                    <div class="hero-content">
+                        <p>WEBSITE</p>
+                        <p>FOR BITISAN<p>
+                        <p>BY BITISAN</p>
+                    </div>
+                    <div class="vector"></div>
+                    <img src="c:\Users\Asus\OneDrive\Pictures\AMP\pilani-clock-tower.png" alt="BITS Clock Tower" class="clock-tower">
+                </div>
+            </div>  
+        </section>
+        <section>
+            <div class="container">
+                <img id="pilani-board" src="c:\Users\Asus\OneDrive\Pictures\AMP\pilani-board.png">
+                <img id="goa-board" src="c:\Users\Asus\OneDrive\Pictures\AMP\goa-board.png">
+                <img id="hyderabad-board" src="c:\Users\Asus\OneDrive\Pictures\AMP\hyderabad-board.png">
+            </div>  
+        </section>
+        <section>
+            <div class="container">
+                <div class="virtual-tour">
+                    <a>VIRTUAL TOUR....</a>
+                </div>
+                <div class="vector2">
+                    <img src="c:\Users\Asus\OneDrive\Pictures\AMP\blending 1719871418610.png">
+                </div>
+                <div class="vector3">
+                    <img src="c:\Users\Asus\OneDrive\Pictures\AMP\blending 1884500211.png">
+                </div>
+                <img id="amit-trivedi" src="c:\Users\Asus\OneDrive\Pictures\AMP\amit-trividi.png">
+            </div>  
+        </section>
+        <section>
+            <div class="container">
+                <div class="analysis-text">
+                    <p>BITSAT</p>
+                    <p>CUTOFF</p> 
+                    <p>PREDIC</p>
+                    <p>TION!!!</p>
+                </div>
+                <div class="analysis-button">
+                    <a>JOIN THE ANALYSIS</a>
+                </div>
+                <div class="graph">
+                    <img src="c:\Users\Asus\OneDrive\Pictures\AMP\graph.png">
+                </div>
+            </div>  
+        </section>
+        <footer>
+            <div class="container">
+                <div class="shirsh-profile-container">
+                    <div class="sub-div-shirsh">
+                        <img src="c:\Users\Asus\OneDrive\Pictures\AMP\shirsh.png">
+                    </div>
+
+                </div>
+                <div class="sehaj-profile-container">
+                    <div class="sub-div-sehaj">
+
+                    </div>
+
+                </div>
+            </div>  
+        </footer> 
+        <script>
+            document.addEventListener('wheel', scrollPage);
+
+            function scrollPage(e) {
+                var nodesName = ['SECTION', 'FOOTER'];
+                if (nodesName.includes(e.target.nodeName)) {
+                    var next = e.target.nextElementSibling;
+                    var prev = e.target.previousElementSibling;
+                } else {
+                    var next = e.target.closest(nodesName).nextElementSibling;
+                    var prev = e.target.closest(nodesName).previousElementSibling;
+                }
+                
+                if (e.deltaY < 0) {
+                    e.preventDefault();
+                    if(nodesName.includes(prev.nodeName)) {
+                    verticalScroll(prev, 800, 'easeInOutCubic');
+                    e.target.closest(nodesName).classList.remove('active')
+                    prev.classList.add('active')
+                    }
+                    
+                } else if (e.deltaY > 0) {
+                    e.preventDefault();
+                    if(nodesName.includes(next.nodeName)) {
+                    verticalScroll(next, 800, 'easeInOutQuad', runAfter);
+                    e.target.closest(nodesName).classList.remove('active');
+                    next.classList.add('active');
+                    }
+                } else {
+                    return false;
+                }
+            }
+
+            function runAfter() {
+                console.log('after');
+            }
+
+            function verticalScroll(destination) {
+                var duration = arguments.length <= 1 || arguments[1] === undefined ? 200 : arguments[1];
+                var easing = arguments.length <= 2 || arguments[2] === undefined ? 'linear' : arguments[2];
+                var callback = arguments[3];
+                var easings = {
+                    easeInOutQuad: function easeInOutQuad(t) {
+                        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+                    },
+                    easeInCubic(t) {
+                        return t * t * t;
+                    },
+                    easeInOutCubic(t) {
+                        return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+                    }
+                };
+
+                var start = window.pageYOffset;
+                var startTime = 'now' in window.performance ? performance.now() : new Date().getTime();
+                var documentHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
+                var windowHeight = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
+                var destinationOffset = typeof destination === 'number' ? destination : destination.offsetTop;
+                var destinationOffsetToScroll = Math.round(documentHeight - destinationOffset < windowHeight ? documentHeight - windowHeight : destinationOffset);
+
+                if ('requestAnimationFrame' in window === false) {
+                    window.scroll(0, destinationOffsetToScroll);
+                    if (callback) {
+                        callback();
+                    }
+                    return;
+                }
+
+                function scroll() {
+                    var now = 'now' in window.performance ? performance.now() : new Date().getTime();
+                    var time = Math.min(1, (now - startTime) / duration);
+                    var timeFunction = easings[easing](time);
+                    window.scroll(0, Math.ceil(timeFunction * (destinationOffsetToScroll - start) + start));
+
+                    if (window.pageYOffset === destinationOffsetToScroll) {
+                        if (callback) {
+                            callback();
+                        }
+                        return;
+                    }
+                    
+                    requestAnimationFrame(scroll);
+                }
+                
+                scroll();
+            }
+        </script>
+    </body>
+</html>
