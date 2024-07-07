@@ -60,13 +60,13 @@
             }
 
             nav ul li {
-                margin: 0 50px;
+                margin: 0 35px;
                 transition: background-color 0.3s ease; /* Smooth transition for the background color */
             }
 
             nav ul li a {
                 text-decoration: none;
-                color: #003a06;
+                color: #000000;
                 font-weight: bold;
                 font-size: 1.2em;
                 padding: 10px; /* Add padding to the anchor to make the hover area larger */
@@ -102,8 +102,8 @@
             }
 
             section:nth-child(4) {
-                background: #a73737; 
-                background: -webkit-linear-gradient(116.71deg, #BDADFC, #03000F); 
+                background: #BDADFC; 
+                background: -webkit-linear-gradient(116.71deg, #BDADFC, #03000F);
                 background: linear-gradient(116.71deg, #BDADFC, #03000F);
             }
             
@@ -251,8 +251,8 @@
                 flex: 1;
                 justify-content: center;
                 align-items: center;
-                margin-left: -179px;
-                margin-right: -115px;
+                margin-left: -336px;
+                margin-right: -278px;
                 margin-top: -471px;
             }
 
@@ -289,10 +289,10 @@
                 position: absolute;
                 width: 241px;
                 height: 55px;
-                left: 661px;
+                left: 575px;
                 top: 2071px;
-                background: #66D5B4;
-                border: 3px solid #001610;
+                background: #AB66D5;
+                border: 1px solid #7F6EE8;
                 box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
                 border-radius: 40px;
             }
@@ -312,23 +312,50 @@
                 color: #000000;
             }
 
+            .graph-grid{
+                display: grid;
+                grid-gap: 10px;
+                grid-template-columns: [col1-start] 489px [col2-start] 700px [col2-end];
+                grid-template-rows: [row1-start] 212px[row2-start] 356px [row2-end];
+            }
+
+            .graph{
+                grid-column: col2-start / col2-end;
+                grid-row: row1-start;
+                margin-top: 62px;
+                margin-left: 124px;
+            }
+
+            .page4-text{
+                grid-column: col1-start;
+                grid-row: row1-start;
+                color: #ffffff;
+                font-family: 'Druk Wide Bold';
+                font-size: 6rem;
+                font-style: normal;
+                font-weight: 900;
+                line-height: 80px;
+                text-align: left;
+                margin-left: 91px;
+                margin-top: 60px;
+            }
+
             .analysis-button{
-                position: absolute;
+                grid-column: col1-start/ col2-end;
+                grid-row: row1-end;
                 width: 250px;
                 height: 54px;
-                left: 642px;
-                top: 3029px;
                 background: #66D5B4;
-                border: 3px solid #001610;
                 box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
                 border-radius: 40px;
+                margin-left: 380px;
             }
 
             .analysis-button a{
-                position: absolute;
+                position: relative;
                 width: 257px;
                 height: 50px;
-                left: 1px;
+                left: 2px;
                 font-family: 'Black Han Sans';
                 font-style: normal;
                 font-weight: 700;
@@ -336,31 +363,6 @@
                 line-height: 48px;
                 letter-spacing: 0.12em;
                 color: #000000;
-            }
-
-            .graph{
-                position: absolute;
-                width: 300px;
-                height: 500px;
-                left: 755px;
-                top: 2503px;
-            }
-
-            .analysis-text{
-                position: absolute;
-                width: 100px;
-                height: 500px;
-                left: 268px;
-                top: 2561px;
-            }
-
-            .analysis-text p{
-                color: #ffffff;
-                font-family: Druk Wide Bold;
-                font-size: 5rem;
-                font-style: normal;
-                font-weight: 900;
-                line-height: 1px;
             }
 
             .shirsh-profile-container{
@@ -491,20 +493,17 @@
             </div>
         </section>
         <section>
-            <div class="container">
-                <div class="analysis-text">
-                    <p>BITSAT</p>
-                    <p>CUTOFF</p> 
-                    <p>PREDIC</p>
-                    <p>TION!!!</p>
+            <div class="graph-grid">
+                <div class="grid-item page4-text">
+                    <p>BITSAT<br>CUTOFF<br>PREDIC<br>TION!!!!</p>
                 </div>
-                <div class="analysis-button">
-                    <a>JOIN THE ANALYSIS</a>
-                </div>
-                <div class="graph">
+                <div class="grid-item graph">
                     <img src="c:\Users\Asus\OneDrive\Pictures\AMP\graph.png">
                 </div>
-            </div>  
+                <div class="grid-item analysis-button">
+                    <a>JOIN THE ANALYSIS</a>
+                </div>
+            </div>
         </section>
         <footer>
             <div class="container">
