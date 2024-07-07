@@ -198,26 +198,6 @@
                 z-index: 1;
             }
 
-            /* .vector {
-                position: absolute;
-                width: 936.5px;
-                height: 692px;
-                left: -166px;
-                top: -387px;
-                background: #D9D9D9;
-                border: 1px solid #D9D9D9;
-                clip-path: polygon(51.1% 100.3%, 100.1% 0%, 0% 0%);        
-            }
-
-            .clock-tower {
-                position: absolute;
-                width: 605px;
-                height: 754px;
-                left: -29px;
-                top: -368px;
-            }
- */
-
             .vector-wrapper {
                 position: absolute;
                 z-index: 1;
@@ -244,57 +224,67 @@
                 z-index: 2;
                 margin-top: 9px;
             }
-
-            #pilani-board{
-                position: absolute;
-                width: 382.34px;
-                height: 381.82px;
-                left: 883px;
-                top: 891px;
+            
+            .board-wrapper {
+                display: flex;
+                width: 100vw;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-end;
             }
 
-            #goa-board{
-                position: absolute;
-                width: 382.34px;
-                height: 381.82px;
-                left: 668px;
-                top: 1089px;
+            .board{
+                width:auto;
+                height:auto;
+            }
+            
+            .vector2-3-wrapper{
+                display: flex;
+                width: 100%;
+                height: 100vh;
+                justify-content: center;
+                align-items: flex-end;
             }
 
-            #hyderabad-board{
-                position: absolute;
-                width: 382.34px;
-                height: 381.82px;
-                left: 1071px;
-                top: 1103px;
+            .vector-curve{
+                display: flex;
+                flex: 1;
+                justify-content: center;
+                align-items: center;
+                margin-left: -179px;
+                margin-right: -115px;
+                margin-top: -471px;
             }
 
-            #amit-trivedi{
-                position: absolute;
-                width: 464.38px;
-                height: 505px;
-                left: 957px;
-                top: 1886px;
-                background: url(.png);
+            .vector2-3-wrapper img{
+                aspect-ratio: 13 /7;
             }
 
-            .vector2{
-                position: absolute;
-                width: 0.6px;
-                height: 157.54px;
-                left: 401px;
-                top: 1535px;
-                transform: rotate(0.7deg);
+            #raga{
+                aspect-ratio: 1 /1;
+                width: 28%;
+                height: 80%;
+                z-index: 10;
+                margin-left: -560px;
+                margin-right: 228px;
             }
 
-            .vector3{
+            .life-at-bits{
                 position: absolute;
-                width: 0.6px;
-                height: 10.54px;
-                left: -21px;
-                top: 1565px;
-                transform: rotate(0.05deg);
+                z-index: 3;
+                width: 597px;
+                height: 360px;
+                left: 347px;
+                font-family: 'Black Han Sans';
+                font-style: normal;
+                font-weight: 1000;
+                font-size: 96px;
+                line-height: 113px;
+                letter-spacing: 0.37em;
+                text-align: left;
+                color: #2B2B2B;
             }
+
             .virtual-tour{
                 position: absolute;
                 width: 241px;
@@ -477,25 +467,28 @@
             </div>  
         </section>
         <section>
-            <div class="container">
-                <img id="pilani-board" src="c:\Users\Asus\OneDrive\Pictures\AMP\pilani-board.png">
-                <img id="goa-board" src="c:\Users\Asus\OneDrive\Pictures\AMP\goa-board.png">
-                <img id="hyderabad-board" src="c:\Users\Asus\OneDrive\Pictures\AMP\hyderabad-board.png">
-            </div>  
+            <div class="board-wrapper">
+                <img class="board" src="c:\Users\Asus\OneDrive\Pictures\AMP\Group 229.png">
+            </div>
         </section>
         <section>
             <div class="container">
+                <div class="life-at-bits">
+                    <p>LIFE<br>AT<br>BITS</p>
+                </div>
                 <div class="virtual-tour">
                     <a>VIRTUAL TOUR....</a>
                 </div>
-                <div class="vector2">
-                    <img src="c:\Users\Asus\OneDrive\Pictures\AMP\blending 1719871418610.png">
+                <div class="vector2-3-wrapper">
+                    <div class="vector-curve">
+                        <img src="c:\Users\Asus\OneDrive\Pictures\AMP\blending 1884500211.png">
+                    </div>
+                    <div class="vector-curve">
+                        <img src="c:\Users\Asus\OneDrive\Pictures\AMP\blending 1719871418610.png">
+                    </div>
+                    <img id="raga" src="c:\Users\Asus\OneDrive\Pictures\AMP\raga.png">
                 </div>
-                <div class="vector3">
-                    <img src="c:\Users\Asus\OneDrive\Pictures\AMP\blending 1884500211.png">
-                </div>
-                <img id="amit-trivedi" src="c:\Users\Asus\OneDrive\Pictures\AMP\amit-trividi.png">
-            </div>  
+            </div>
         </section>
         <section>
             <div class="container">
@@ -530,7 +523,7 @@
             </div>  
         </footer> 
         <script>
-            document.addEventListener('wheel', scrollPage);
+            document.addEventListener('wheel', scrollPage, {passive:false});
 
             function scrollPage(e) {
                 var nodesName = ['SECTION', 'FOOTER'];
