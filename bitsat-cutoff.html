@@ -17,6 +17,42 @@
             background-color:#1F2739;
         }
 
+        nav {
+            position: relative;
+            top: 0;
+            width: 100%;
+            z-index: 4; /* Ensure the nav stays on top */
+        }
+
+        nav ul {
+            margin-top: 0;
+            margin-left: 0px;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        nav ul li {
+            margin: 0 35px;
+            transition: 0.3s ease; /* Smooth transition for the background color */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            font-size: 1.2em;
+            padding: 10px; /* Add padding to the anchor to make the hover area larger */
+            display: block; /* Make the anchor a block element to cover the entire li */
+        }
+
+        nav ul li a:hover {
+            border-radius: 30px;
+            border: #003a06;
+            background-color: rgba(255, 255, 255, 0.944); /* Change this to your desired background color */
+        }
+
         h1 {
             font-size:3em; 
             font-weight: 300;
@@ -112,13 +148,54 @@
             transition-timing-function: line;
         }
 
+        .contact-box{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .contact-button {
+            text-align: center;
+            width: 20%;
+            height: 5%;
+            background-color: #FFF842;
+            color: #403E10;
+            font-weight: bold;
+            
+            box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+            transform: translate3d(6px, -6px, 0);
+            
+            transition-delay: 0s;
+                transition-duration: 0.4s;
+                transition-property: all;
+            transition-timing-function: line;
+        }
+
         @media (max-width: 800px) {
-        .container td:nth-child(4),
-        .container th:nth-child(4) { display: none; }
+            .container td:nth-child(4),
+            .container th:nth-child(4) { display: none; }
+            nav ul li {
+                margin: 10px 0px;
+                transition: 0.3s ease;
+            }
+
+            nav ul li a{
+                font-size: 0.4rem;
+            }
+            .contact-box{flex-direction: column; align-items: center;}
         }
 
     </style>
     <body>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="#">Fresher 2024</a></li>
+                <li><a href="#">Life at BITS</a></li>
+                <li><a href="./bitsat-cutoff.html">BITSAT Cutoff Prediction</a></li>
+                <li><a href="#">Meet Your Seniors</a></li>
+            </ul>
+        </nav>
         <h1>Iteration 1 Extimated Cutoffs</h1>
         <table class="container">
             <thead>
@@ -216,6 +293,98 @@
                 </tr>
             </tbody>
         </table>
+        <h1>2023 Final Cutoffs</h1>
+        <table class="container">
+            <thead>
+                <tr>
+                    <th><h1>Branch</h1></th>
+                    <th><h1>Pilani</h1></th>
+                    <th><h1>Goa</h1></th>
+                    <th><h1>Hyderabad</h1></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CSE</td>
+                    <td>331</td>
+                    <td>295</td>
+                    <td>284</td>
+                </tr>
+                <tr>
+                    <td>ECE</td>
+                    <td>296</td>
+                    <td>267</td>
+                    <td>265</td>
+                </tr>
+                <tr>
+                    <td>EEE</td>
+                    <td>272</td>
+                    <td>252</td>
+                    <td>251</td>
+                </tr>
+                <tr>
+                    <td>ENI</td>
+                    <td>266</td>
+                    <td>244</td>
+                    <td>244</td>
+                </tr>
+                <tr>
+                    <td>Mech</td>
+                    <td>244</td>
+                    <td>223</td>
+                    <td>218</td>
+                </tr>
+                <tr>
+                    <td>Chemical</td>
+                    <td>224</td>
+                    <td>209</td>
+                    <td>207</td>
+                </tr>
+                <tr>
+                    <td>Civil</td>
+                    <td>213</td>
+                    <td>N.A</td>
+                    <td>204</td>
+                </tr>
+                <tr>
+                    <td>Msc Economics</td>
+                    <td>296</td>
+                    <td>267</td>
+                    <td>236</td>
+                </tr>
+                <tr>
+                    <td>Msc Maths</td>
+                    <td>236</td>
+                    <td>221</td>
+                    <td>219</td>
+                </tr>
+                <tr>
+                    <td>Msc Physics</td>
+                    <td>235</td>
+                    <td>222</td>
+                    <td>219</td>
+                </tr>
+                <tr>
+                    <td>Msc Chemistry</td>
+                    <td>213</td>
+                    <td>205</td>
+                    <td>205</td>
+                </tr>
+                <tr>
+                    <td>Msc Biology</td>
+                    <td>212</td>
+                    <td>204</td>
+                    <td>204</td>
+                </tr>
+                <tr>
+                    <td>B Pharma</td>
+                    <td>153</td>
+                    <td>N.A</td>
+                    <td>135</td>
+                </tr>
+            </tbody>
+        </table>
+
 
         <h1>2022 Final Cutoffs</h1>
         <table class="container">
@@ -233,12 +402,6 @@
                     <td>321</td>
                     <td>287</td>
                     <td>282</td>
-                </tr>
-                <tr>
-                    <td>MNC</td>
-                    <td>N.A.</td>
-                    <td>N.A.</td>
-                    <td>N.A.</td>
                 </tr>
                 <tr>
                     <td>ECE</td>
@@ -260,6 +423,12 @@
                 </tr>
                 <tr>
                     <td>Mech</td>
+                    <td>224</td>
+                    <td>203</td>
+                    <td>198</td>
+                </tr>
+                <tr>
+                    <td>Manufacturing</td>
                     <td>224</td>
                     <td>203</td>
                     <td>198</td>
@@ -314,5 +483,11 @@
                 </tr>
             </tbody>
         </table>
+        <h2>For any Cutoff Related Doubts and Queries. You can Contact following BITSian </h2>
+        <div class="contact-box">
+            <div class="contact-button"><p>Daksh Jhanjhari<br>79748 99054</p></div>
+            <div class="contact-button"><p>Shirsh Jain<br>8696593878</p></div>
+            <div class="contact-button"><p>Sehaj Sharma<br>88995 85423</p></div>
+        </div>
     </body>
 </html>
