@@ -26,43 +26,68 @@
             overflow-x: hidden;
         }
 
-        nav {
-            position: relative;
+        nav 
+        {
+            height: 100px;
+            background-color: transparent;
+            position: sticky;
             top: 0;
             width: 100%;
-            z-index: 4; /* Ensure the nav stays on top */
-        }
-
-        nav ul {
-            margin-top: 0;
-            margin-left: 0px;
-            list-style: none;
-            display: flex;
             justify-content: center;
-            padding: 10px 0;
+            gap: 10px;
+            align-items: center;
+            z-index: 4; 
         }
 
-        nav ul li {
+        .links-container{
+                height: 100%;
+                width: 100%;
+                margin-top: 0;
+                margin-left: 0px;
+                list-style: none;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                padding: 0px 0px;
+            }
+
+        /* nav ul li {
             margin: 0 35px;
             transition: 0.3s ease; /* Smooth transition for the background color */
+        .links-container a{
+            margin: 10px 30px;
         }
 
-        nav ul li a {
+
+        nav a {
+            height: 40%;   
+            display: flex;
+            align-items: center;
             text-decoration: none;
             color: #FFFFA0;
             font-weight: bold;
             font-size: 1.2em;
-            padding: 10px; /* Add padding to the anchor to make the hover area larger */
-            display: block; /* Make the anchor a block element to cover the entire li */
+            padding: 15px; /* Add padding to the anchor to make the hover area larger */
         }
 
-        nav ul li a:hover {
+        nav a:hover {
             border-radius: 30px;
             border: #003a06;
-            transition-duration: 0.3;
+            transition-duration: 0.3s;
             color: #000000;
             background-color: rgba(255, 255, 255, 0.944); /* Change this to your desired background color */
         }
+
+        .open-sidebar-button, .close-sidebar-button{
+                display: none;
+            }
+
+            input[type="checkbox"] {
+                position: absolute;
+                opacity: 0;
+                pointer-events: none;
+            }
 
         h1 {
             font-size:3em; 
@@ -205,17 +230,69 @@
                 height: 20%
             }
         }
-
+        @media (max-width: 576px) {
+            nav{
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+            .links-container{
+                margin-top: 0px;
+                padding-top: 0px;
+                background-color:#1F2739;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                z-index: 10;
+                width: 300px;
+                /* background-color: var(--color-1); */
+                box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
+                transition: 0.75s ease-out;
+            }
+            nav a{
+                box-sizing: border-box;
+                height: auto;
+                width: 100%;
+                padding: 20px 30px;
+                justify-content: flex-start;
+                display: block;
+            }
+            .open-sidebar-button, .close-sidebar-button{
+                padding: 20px;
+                display: block;
+            }
+            #sidebar-active:checked ~ .links-container{
+                right: 0;
+            }
+            #sidebar-active:checked ~ #overlay{
+                height: 100%;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 9;
+            }
+        }
     </style>
     <body>
         <nav>
-            <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="#">Fresher 2024</a></li>
-                <li><a href="#">Life at BITS</a></li>
-                <li><a href="./bitsat-cutoff.html">BITSAT Cutoff Prediction</a></li>
-                <li><a href="#">Meet Your Seniors</a></li>
-            </ul>
+            <input type="checkbox" id="sidebar-active">
+            <label for="sidebar-active" class="open-sidebar-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="white"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+            </label>
+            <label id="overlay" for="sidebar-active"></label>
+            <div class="links-container">
+            <label for="sidebar-active" class="close-sidebar-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+            </label>
+                <a href="#">Home</a>
+                <a href="#">Fresher 2024</a>
+                <a href="#">Life at BITS</a>
+                <a href="./bitsat-cutoff.html">BITSAT Cutoff Prediction</a>
+                <a href="#">Meet Your Seniors</a>
+            </div>
         </nav>
         <h1>Iteration 1 Estimated Cutoffs</h1>
         <table class="container">
