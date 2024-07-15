@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Boogaloo&display=swap" rel="stylesheet">
+    </meta>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fresher Website</title>
+    </head>
+    <style>
+        body h1 {
+            font-family: "Boogaloo", sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 64px;
+            text-align: center;
+            padding: 0;
+            color: #58CDFF;
+        }
+
+        nav {
+                height: 100px;
+                background-color: transparent;
+                position: sticky;
+                top: 0;
+                width: 100%;
+                justify-content: center;
+                gap: 10px;
+                align-items: center;
+                z-index: 4; 
+        }
+
+        nav a {
+            height: 40%;   
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #FFFFA0;
+            font-weight: bold;
+            font-size: 1.2em;
+            padding: 15px; /* Add padding to the anchor to make the hover area larger */
+        }
+
+        nav a:hover {
+            border-radius: 30px;
+            border: #003a06;
+            transition-duration: 0.3s;
+            color: #000000;
+            background-color: rgba(255, 255, 255, 0.944); /* Change this to your desired background color */
+        }
+
+        .links-container{
+            height: 100%;
+            width: 100%;
+            margin-top: 0;
+            margin-left: 0px;
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 0px 0px;
+        }
+
+        .links-container a{
+            margin: 10px 30px;
+        }
+
+        .open-sidebar-button, .close-sidebar-button{
+                display: none;
+            }
+
+            input[type="checkbox"] {
+                position: absolute;
+                opacity: 0;
+                pointer-events: none;
+            }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+            background-color: #3F3F3F;
+            font-family: "Boogaloo", sans-serif;
+            overflow-x: hidden;                            
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 700vh;
+            align-items: center;
+        }
+
+        .heading-wrapper p{
+            font-size: 30px;
+            margin-left: 60px;
+        }
+
+        .wrapper{
+            display: flex;
+            flex-direction: column;
+            gap:50px;
+            align-items: center;
+        }
+
+        .author-wrapper{
+            margin-right: 700px;
+            font-size: 28px;
+        }
+
+        .content-wrapper{
+            box-sizing: border-box;
+
+            width: 1000px;
+            height: 500px;
+
+            border: 4px solid #58CDFF;
+            filter: drop-shadow(-24px 22px 4px rgba(88, 205, 255, 0.44));
+            border-radius: 50px;
+        }
+
+        .room-req{
+            margin-left: 60px;
+        }
+
+        .content-wrapper p{
+            width: 350px;
+            height: 44px;
+
+            font-family: "Boogaloo", sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 30px;
+            line-height: 114px;
+            text-align: center;
+            margin-top: 0px;
+            margin-left: 10px;
+
+            color: #000000;
+        }
+
+        .list-wrapper{
+            position: relative;
+            top:10px;
+            display: flex;
+            flex-direction: row;
+            gap:30px
+        }
+
+        .yt-wrapper{
+            align-items: center;
+        }
+        
+        .button-wrapper {
+            text-align: left;
+            overflow: hidden;
+            width: 40%;
+            height: 100px;
+            margin: 0 auto;
+            display: table;
+            padding: 0 0 2em 0;
+            background-color: #4f4f4f;
+        }
+
+        .button-wrapper:hover {
+            background-color: #FFF842;
+            color: #403E10;
+            font-weight: bold;
+            width: 40%;
+
+            box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+            transform: translate3d(6px, -6px, 0);
+            
+            transition-delay: 0s;
+            transition-duration: 0.4s;
+            transition-property: all;
+            transition-timing-function: line;
+        }
+
+        .travel-wrapper{
+            display: flex;
+            flex-direction: row;
+        }
+
+        .india-travel-map{
+            position: relative;
+            bottom: 40px;
+        }
+
+        .travel-guide-button{
+            margin-top: 309px;
+        }
+
+        .stay-taxi-wrapper{
+            display: flex;
+            flex-direction: row;
+            justify-items: center;
+            padding-left: 100px;
+
+        }
+
+        .stay-wrapper{
+            position: relative;
+            top: 100px;
+        }
+
+        .stay-wrapper p{
+            font-size: 40px;
+        }
+
+        .taxi-wrapper{
+            margin-top: 100px;
+        }
+
+        .taxi-wrapper p{
+            font-size: 20px;
+            align-items: center;
+            line-height: 20px;
+        }
+
+        .Scholarship-wrapper{
+            margin-top: 100px;
+            display: flex;
+            flex-direction: column;
+            /* column-gap: 26px; */
+            gap: 30px;
+            justify-content: center;
+        }
+
+        @media (max-width: 800px) {
+            .container td:nth-child(4),
+            .container th:nth-child(4) { display: none; }
+            nav ul li {
+                margin: 10px 0px;
+                transition: 0.3s ease;
+            }
+
+            nav ul li a{
+                font-size: 0.8rem;
+                text-align: center;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            body{
+                height: 750vh;
+            }
+            .content-wrapper{
+                width: 400px;
+                height: fit-content;
+            }
+            .list-wrapper{
+                align-items: center;
+                flex-direction: column;
+            }
+            iframe{
+                width: 300px;
+                height: 200px;
+            }
+
+            .button-wrapper{
+                width: 50px;
+                height: 30px;
+            }
+
+            .india-travel-map img{
+                width: 330px;
+                height: 400px;
+
+            }
+            .travel-wrapper{
+                flex-direction: column-reverse;
+            }
+            .travel-guide-button{
+                margin-top: 0px;
+            }
+            .author-wrapper{
+                margin-right: 0;
+            }
+            .stay-taxi-wrapper{
+                flex-direction: column-reverse;
+                padding-left: 0;
+            }
+            .button-wrapper{
+                padding: 0;
+            }
+
+            .button-wrapper p{
+                width: 100px;
+                height: fit-content;
+                font-size: 20px;
+                margin-left: 0px;
+                margin-top: 10px;
+                line-height: 16px;
+            }
+
+            .button-wrapper p:hover{
+                width: 100px;
+                height: 20px;
+            }
+
+            .Scholarship-wrapper{
+                margin-top: 60px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            nav{
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+            .links-container{
+                margin-top: 0px;
+                padding-top: 0px;
+                background-color:#1F2739;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                z-index: 10;
+                width: 300px;
+                /* background-color: var(--color-1); */
+                box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
+                transition: 0.75s ease-out;
+            }
+            nav a{
+                box-sizing: border-box;
+                height: auto;
+                width: 100%;
+                padding: 20px 30px;
+                justify-content: flex-start;
+                display: block;
+            }
+            .open-sidebar-button, .close-sidebar-button{
+                padding: 20px;
+                display: block;
+            }
+            #sidebar-active:checked ~ .links-container{
+                right: 0;
+            }
+            #sidebar-active:checked ~ #overlay{
+                height: 100%;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 9;
+            }
+        }
+
+    </style>
+    <body>
+        <nav>
+            <input type="checkbox" id="sidebar-active">
+            <label for="sidebar-active" class="open-sidebar-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="white"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+            </label>
+            <label id="overlay" for="sidebar-active"></label>
+            <div class="links-container">
+            <label for="sidebar-active" class="close-sidebar-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+            </label>
+                <a href="./index.html">Home</a>
+                <a href="./fresher.html">Fresher 2024</a>
+                <a href="#">Life at BITS</a>
+                <a href="./bitsat-cutoff.html">BITSAT Cutoff Prediction</a>
+                <a href="#">Meet Your Seniors</a>
+            </div>
+        </nav>
+        <div class="heading-wrapper">
+            <h1>Resource Guide</h1>
+            <p>it's all what you need</p>
+        </div>
+        <div class="wrapper">
+            <div class="author-wrapper">
+                <p>By Shirsh Jain</p>
+            </div>
+            <div class="content-wrapper">
+                <p>Packing List</p>
+                <div class="list-wrapper">
+                    <div class="room-req">
+                        <h2 style="color:yellow;">Room Requirements</h2>
+                        <input type="checkbox">
+                        <label>Mattresses</label><br>
+                        <input type="checkbox">
+                        <label>Pillow</label><br>
+                        <input type="checkbox">
+                        <label>Cushions</label><br>
+                        <input type="checkbox">
+                        <label>Beside Mats</label><br>
+                        <input type="checkbox">
+                        <label>Spike Gaurds</label><br>
+                        <input type="checkbox">
+                        <label>Locks</label><br>
+                        <input type="checkbox">
+                        <label>Table Lamps</label><br>
+                        <input type="checkbox">
+                        <label>Broom</label><br>
+                        <input type="checkbox">
+                        <label>Dusting Cloth</label><br>
+                        <input type="checkbox">
+                        <label>Dustbins and Dustbin Polybag</label><br>
+                        <input type="checkbox">
+                        <label>Doormats</label><br>
+                        <input type="checkbox">
+                        <label>Curtain</label><br>
+                        <input type="checkbox">
+                        <label>Bed sheets(2-4)*</label><br>
+                        <input type="checkbox">
+                        <label>Pillow Cover(2-4)*</label><br>
+                    </div>
+                    <div class="toiletries-req">
+                        <h2 style="color:yellow;">Toiletries Requirements</h2>
+                        <input type="checkbox">
+                        <label>Bathing Soaps</label><br>
+                        <input type="checkbox">
+                        <label>Shampoo</label><br>
+                        <input type="checkbox">
+                        <label>Face Packs</label><br>
+                        <input type="checkbox">
+                        <label>Hair Oil/Gel</label><br>
+                        <input type="checkbox">
+                        <label>Comb</label><br>
+                        <input type="checkbox">
+                        <label>Toothbrushes,Toothpaste</label><br>
+                        <input type="checkbox">
+                        <label>Shaving Kit</label><br>
+                        <input type="checkbox">
+                        <label>Washing Powder and Brush</label><br>
+                        <input type="checkbox">
+                        <label>Buckets and Mugs</label><br>
+                        <input type="checkbox">
+                        <label>Hand Wash</label><br>
+                        <input type="checkbox">
+                        <label>Talc</label><br>
+                        <input type="checkbox">
+                        <label>Deodorants(you will need it)</label><br>
+                        <input type="checkbox">
+                        <label>Creams and Moisturisers</label><br>   
+                    </div>
+                    <div class="stationary-req">
+                        <h2 style="color:yellow;">Stationary Requirements</h2>
+                        <input type="checkbox">
+                        <label>Medicines</label><br>
+                        <input type="checkbox">
+                        <label>School Bag</label><br>
+                        <input type="checkbox">
+                        <label>Newspapers</label><br>
+                        <input type="checkbox">
+                        <label>Text Box</label><br>
+                        <input type="checkbox">
+                        <label>Pens, Pencils etc</label><br>
+                        <input type="checkbox">
+                        <label>Rough PApers/Books</label><br>
+                        <input type="checkbox">
+                        <label>Scientific Calculator</label><br>
+                        <input type="checkbox">
+                        <label>Stapler and Punch holes</label><br>
+                        <input type="checkbox">
+                        <label>Hangars for Clothes</label><br>
+                        <input type="checkbox">
+                        <label>Books*</label><br>
+                        <input type="checkbox">
+                        <label>Badminton Rackets/Tennis Rackets*</label><br>
+                        <input type="checkbox">
+                        <label>Sports Gear*</label><br>
+                        <input type="checkbox">
+                        <label>Alarm Clock</label><br>
+                        <input type="checkbox">
+                        <label>Pendrive</label><br>
+                        <input type="checkbox">
+                        <label>Iron</label><br>
+                    </div>
+                    <div class="stationary-req">
+                        <h2 style="color:yellow;">Clothing Requirements</h2>
+                        <input type="checkbox">
+                        <label>Shirts*</label><br>
+                        <input type="checkbox">
+                        <label>Jeans*</label><br>
+                        <input type="checkbox">
+                        <label>Suits*</label><br>
+                        <input type="checkbox">
+                        <label>Raincoat*</label><br>
+                        <input type="checkbox">
+                        <label>Towel*</label><br>
+                        <input type="checkbox">
+                        <label>Undergarments*</label><br>
+                        <input type="checkbox">
+                        <label>Handkerchiefs*</label><br>
+                        <input type="checkbox">
+                        <label>Hand Towels*</label><br>
+                        <input type="checkbox">
+                        <label>Swim Suit*</label><br>
+                        <input type="checkbox">
+                        <label>Slippers*</label><br>
+                        <input type="checkbox">
+                        <label>Sports Shoes*</label><br>
+                        <input type="checkbox">
+                        <label>Sandals*</label><br>
+                        <input type="checkbox">
+                        <label>Formal Shoes (see suits)*</label><br>
+                    </div>
+                </div>
+                <p style="font-size: 15px;margin-top: -20px;">* indicates Not available here, Advised to bring from home</p>
+            </div>
+            <div class="yt-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/-3sj61ttiiw?si=t3hEIWBf7lkqA57m" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div style="height: 600px;"class="content-wrapper">
+                <div>
+                    <p>To Pilani</p>
+                    <div class="travel-wrapper">
+                        <div class="button-wrapper travel-guide-button">
+                            <a href="images/Getting_to_Pilani.pdf"><p>Travel Guide</p></a>
+                        </div>
+                        <div class="india-travel-map">
+                            <img width="540px" height="529px" src="images/india_map_travel_guide.png">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="yt-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/4o3rWFMA1d8?si=qn_Ug1Nu5QybekHt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div style="height: 550px;" class="content-wrapper">
+                <div>
+                    <p>Stay and Taxi</p>
+                    <div class="stay-taxi-wrapper">
+                        <div class="stay-wrapper">
+                            <div class="button-wrapper">
+                                <a href="https://swd.bits-pilani.ac.in/Files/Accommodation_Pilani.pdf"><p>Stay Document</p></a>
+                            </div>
+                        </div>
+                        <div class="taxi-wrapper">
+                            <p>Taxi<br>Contact:+91 90790 60824</p>
+                            <p>From Pilani to Loharu ==> 600<br> From Delhi to Pilani(sedan) ==> 3500 </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="yt-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/7BdjKJd3E1w?si=1Wl9GoW1HH7BiHo5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="content-wrapper">
+                <div>
+                    <p>Scholarship and Loans</p>
+                    <div class="Scholarship-wrapper">
+                        <div class="button-wrapper">
+                            <a href="https://universe.bits-pilani.ac.in/uploads/Goa/admissions/sections/SCHOLARSHIPS.pdf"><p>Latest Scholarship Guide</p></a>
+                        </div>
+                        <div class="button-wrapper">
+                            <a href="https://docs.google.com/document/d/1OlGxI6zo_VQDlUzWYFW5NfT8QFGMWNJhf7uEAmf3LL8/edit?usp=sharing"><p>Loan Guide By shirsh Jain</p></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="yt-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/sTXfh9VZrxw?si=i52El11XfUxYAtFV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="content-wrapper">
+                <div>
+                    <p>Acadmics</p>
+                    <div>
+                        <h1>Go to the Classes!!!!!That's All</h1>
+                    </div>
+                    <div class="button-wrapper">
+                        <a href="#">
+                            <p>BEST Acad DRIVE EVER</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="yt-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/IZT7krZ13zk?si=ohuRdztpxxeOj3MH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>            
+            </div>
+        </div>
+
+
+    </body>
+</html>
