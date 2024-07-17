@@ -1,38 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-    <meta>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Boogaloo&display=swap" rel="stylesheet">
-    </meta>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Fresher Website</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Guide</title>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Guide</title>
     <style>
-        body h1 {
-            font-family: "Boogaloo", sans-serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 64px;
-            text-align: center;
+        * {
+            box-sizing: border-box;
+            margin: 0;
             padding: 0;
-            color: #58CDFF;
         }
-
-        nav {
-                height: 100px;
-                background-color: transparent;
-                position: sticky;
-                top: 0;
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background-color: #1F2739;
+            overflow-x: hidden;
+        }
+        nav 
+        {
+            height: 100px;
+            background-color: #2F3640;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+            z-index: 4; 
+        }
+        .links-container{
+                height: 100%;
                 width: 100%;
-                justify-content: center;
-                gap: 10px;
+                margin-top: 0;
+                margin-left: 0px;
+                list-style: none;
+                display: flex;
+                flex-direction: row;
                 align-items: center;
-                z-index: 4; 
+                justify-content: center;
+                padding: 0px 0px;
+            }
+        
+        .links-container a{
+            margin: 10px 30px;
         }
-
         nav a {
             height: 40%;   
             display: flex;
@@ -52,23 +70,6 @@
             background-color: rgba(255, 255, 255, 0.944); /* Change this to your desired background color */
         }
 
-        .links-container{
-            height: 100%;
-            width: 100%;
-            margin-top: 0;
-            margin-left: 0px;
-            list-style: none;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            padding: 0px 0px;
-        }
-
-        .links-container a{
-            margin: 10px 30px;
-        }
-
         .open-sidebar-button, .close-sidebar-button{
                 display: none;
             }
@@ -78,101 +79,84 @@
                 opacity: 0;
                 pointer-events: none;
             }
-
-
-        body {
-            margin: 0;
-            padding: 0;
-            color: #ffffff;
-            background-color: #3F3F3F;
-            font-family: "Boogaloo", sans-serif;
-            overflow-x: hidden;                            
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 700vh;
-            align-items: center;
-        }
-
-        .heading-wrapper p{
-            font-size: 30px;
-            margin-left: 60px;
-        }
-
-        .wrapper{
-            display: flex;
-            flex-direction: column;
-            gap:50px;
-            align-items: center;
-        }
-
-        .author-wrapper{
-            margin-right: 700px;
-            font-size: 28px;
-        }
-
-        .content-wrapper{
-            box-sizing: border-box;
-
-            width: 1000px;
-            height: 500px;
-
-            border: 4px solid #58CDFF;
-            filter: drop-shadow(-24px 22px 4px rgba(88, 205, 255, 0.44));
-            border-radius: 50px;
-        }
-
-        .room-req{
-            margin-left: 60px;
-        }
-
-        .content-wrapper p{
-            width: 350px;
-            height: 44px;
-
-            font-family: "Boogaloo", sans-serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 30px;
-            line-height: 114px;
+        .heading-wrapper {
             text-align: center;
-            margin-top: 0px;
-            margin-left: 10px;
-
-            color: #000000;
+            padding: 2em;
+            background-color: #2F3640;
+            color: #fff;
         }
-
-        .list-wrapper{
-            position: relative;
-            top:10px;
-            display: flex;
-            flex-direction: row;
-            gap:30px
+        .heading-wrapper h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+            color: #66D9EF;
         }
-
-        .yt-wrapper{
-            align-items: center;
-        }
-        
-        .button-wrapper {
-            text-align: left;
-            overflow: hidden;
-            width: 40%;
-            height: 100px;
+        .wrapper {
+            max-width: 800px;
             margin: 0 auto;
-            display: table;
-            padding: 0 0 2em 0;
-            background-color: #4f4f4f;
+            padding: 2em;
+            background-color: #1F2739;;
+            border: 1px solid #ddd;
+            border-radius: 10px;
         }
-
-        .button-wrapper:hover {
-            background-color: #FFF842;
-            color: #403E10;
+        .author-wrapper {
+            text-align: center;
+            margin-bottom: 1em;
+            color: #66D9EF;
+        }
+        .content-wrapper {
+            margin-bottom: 2em;
+        }
+        .list-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .room-req, .toiletries-req, .stationary-req {
+            flex-basis: 40%;
+            margin: 1em;
+            padding: 1em;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #1F2739;;
+        }
+        .room-req h2, .toiletries-req h2, .stationary-req h2 {
+            margin-top: 0;
+            color: #D4C1E8;
+        }
+        .yt-wrapper {
+            margin-top: 4em;
+            margin-bottom: 2em;
+        }
+        .yt-wrapper iframe {
+            width: 100%;
+            height: 315px;
+            border: none;
+        }
+        .travel-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .button-wrapper {
+            background-color: #66D9EF;
+            padding: 10px 20px;
+            border: none;
+            /* border-radius: 10px; */
+            cursor: pointer;
+            color: #1F2739;
+            margin: 1em;
+        }
+        .button-wrapper a {
+            color: #1F2739;
+            text-decoration: none;
             font-weight: bold;
-            width: 40%;
+        }
+        .button-wrapper:hover {
+            /* background-color: #4CAF50; */
+            color: #403E10;
 
-            box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
-            transform: translate3d(6px, -6px, 0);
+            background-color: #FFF842;
+            box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;            transform: translate3d(6px, -6px, 0);
             
             transition-delay: 0s;
             transition-duration: 0.4s;
@@ -180,59 +164,55 @@
             transition-timing-function: line;
         }
 
-        .travel-wrapper{
+        .button-wrapper.travel-guide-button {
+            max-height: 3em;
+        }
+        
+        .india-travel-map img {
+            width: 100%;
+            height: 529px;
+            border: none;
+        }
+        .stay-taxi-wrapper {
             display: flex;
-            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
         }
-
-        .india-travel-map{
-            position: relative;
-            bottom: 40px;
+        .stay-wrapper, .taxi-wrapper {
+            flex-basis: 45%;
+            margin: 1em;
+            padding: 1em;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            /* background-color: #F7F7F7; */
         }
-
-        .travel-guide-button{
-            margin-top: 309px;
-        }
-
-        .stay-taxi-wrapper{
+        .Scholarship-wrapper {
             display: flex;
-            flex-direction: row;
-            justify-items: center;
-            padding-left: 100px;
-
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        input[type="checkbox"] {
+            margin: 10px;
+        }
+        input[type="checkbox"] + label {
+            color: #66D9EF;
         }
 
-        .stay-wrapper{
-            position: relative;
-            top: 100px;
+        .both-wrapper{
+            margin-bottom: 2em;
         }
-
-        .stay-wrapper p{
-            font-size: 40px;
+        @media (min-width: 693px){
+            .button-wrapper.travel-guide-button {
+                margin-top: 15em;
+                max-width: 200px;
+            }
+            #acads-drive-button{
+                max-width: 600px;
+                margin:auto;
+            }
         }
-
-        .taxi-wrapper{
-            margin-top: 100px;
-        }
-
-        .taxi-wrapper p{
-            font-size: 20px;
-            align-items: center;
-            line-height: 20px;
-        }
-
-        .Scholarship-wrapper{
-            margin-top: 100px;
-            display: flex;
-            flex-direction: column;
-            /* column-gap: 26px; */
-            gap: 30px;
-            justify-content: center;
-        }
-
-        @media (max-width: 800px) {
-            .container td:nth-child(4),
-            .container th:nth-child(4) { display: none; }
+        @media (max-width: 800px){
             nav ul li {
                 margin: 10px 0px;
                 transition: 0.3s ease;
@@ -242,72 +222,24 @@
                 font-size: 0.8rem;
                 text-align: center;
             }
-        }
-
-        @media screen and (max-width: 768px) {
-            body{
-                height: 750vh;
+            .room-req, .toiletries-req, .stationary-req, .clothing-req, .stay-wrapper,.taxi-wrapper {
+                flex-basis: 100%; /* Adjusted for smaller screens */
             }
-            .content-wrapper{
-                width: 400px;
-                height: fit-content;
-            }
-            .list-wrapper{
-                align-items: center;
-                flex-direction: column;
-            }
-            iframe{
-                width: 300px;
-                height: 200px;
+            .button-wrapper.travel-guide-button {
+                max-width: 200px; /* Limit the width of the button */
+                margin: auto; /* Center the button */
             }
 
-            .button-wrapper{
-                width: 50px;
-                height: 30px;
+            .india-travel-map {
+                margin: auto; /* Center the map */
+                text-align: center; /* Center the content inside the map wrapper */
             }
-
-            .india-travel-map img{
-                width: 330px;
-                height: 400px;
-
-            }
-            .travel-wrapper{
-                flex-direction: column-reverse;
-            }
-            .travel-guide-button{
-                margin-top: 0px;
-            }
-            .author-wrapper{
-                margin-right: 0;
-            }
-            .stay-taxi-wrapper{
-                flex-direction: column-reverse;
-                padding-left: 0;
-            }
-            .button-wrapper{
-                padding: 0;
-            }
-
-            .button-wrapper p{
-                width: 100px;
-                height: fit-content;
-                font-size: 20px;
-                margin-left: 0px;
-                margin-top: 10px;
-                line-height: 16px;
-            }
-
-            .button-wrapper p:hover{
-                width: 100px;
-                height: 20px;
-            }
-
-            .Scholarship-wrapper{
-                margin-top: 60px;
+            .Scholarship-wrapper {
+                justify-content: center;
             }
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 720px) {
             nav{
                 align-items: flex-start;
                 justify-content: flex-start;
@@ -352,9 +284,9 @@
                 z-index: 9;
             }
         }
-
     </style>
-    <body>
+</head>
+<body>
         <nav>
             <input type="checkbox" id="sidebar-active">
             <label for="sidebar-active" class="open-sidebar-button">
@@ -374,17 +306,17 @@
         </nav>
         <div class="heading-wrapper">
             <h1>Resource Guide</h1>
-            <p>it's all what you need</p>
+            <p style=" font-size: 1.6em;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center; color: #FB667A;">it's all what you need</p>
         </div>
         <div class="wrapper">
             <div class="author-wrapper">
-                <p>By Shirsh Jain</p>
+                <p style=" font-size: 1.3em">By Shirsh Jain</p>
             </div>
             <div class="content-wrapper">
-                <p>Packing List</p>
+                <p style=" font-size: 2em;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center; color: #FB667A;">Packing List</p>
                 <div class="list-wrapper">
                     <div class="room-req">
-                        <h2 style="color:yellow;">Room Requirements</h2>
+                        <h2 >Room Requirements</h2>
                         <input type="checkbox">
                         <label>Mattresses</label><br>
                         <input type="checkbox">
@@ -415,7 +347,7 @@
                         <label>Pillow Cover(2-4)*</label><br>
                     </div>
                     <div class="toiletries-req">
-                        <h2 style="color:yellow;">Toiletries Requirements</h2>
+                        <h2>Toiletries Requirements</h2>
                         <input type="checkbox">
                         <label>Bathing Soaps</label><br>
                         <input type="checkbox">
@@ -444,7 +376,7 @@
                         <label>Creams and Moisturisers</label><br>   
                     </div>
                     <div class="stationary-req">
-                        <h2 style="color:yellow;">Stationary Requirements</h2>
+                        <h2>Stationary Requirements</h2>
                         <input type="checkbox">
                         <label>Medicines</label><br>
                         <input type="checkbox">
@@ -477,7 +409,7 @@
                         <label>Iron</label><br>
                     </div>
                     <div class="stationary-req">
-                        <h2 style="color:yellow;">Clothing Requirements</h2>
+                        <h2>Clothing Requirements</h2>
                         <input type="checkbox">
                         <label>Shirts*</label><br>
                         <input type="checkbox">
@@ -506,17 +438,17 @@
                         <label>Formal Shoes (see suits)*</label><br>
                     </div>
                 </div>
-                <p style="font-size: 15px;margin-top: -20px;">* indicates Not available here, Advised to bring from home</p>
+                <p style="font-size: 1em;margin-top: -10px; color: #FB667A; text-align: center;">* indicates Not available here, Advised to bring from home</p>
             </div>
             <div class="yt-wrapper">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/-3sj61ttiiw?si=t3hEIWBf7lkqA57m" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
             <div style="height: 600px;"class="content-wrapper">
                 <div>
-                    <p>To Pilani</p>
+                    <p style="font-size: 2em; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center; color: #FB667A;">To Pilani</p>
                     <div class="travel-wrapper">
                         <div class="button-wrapper travel-guide-button">
-                            <a href="images/Getting_to_Pilani.pdf"><p>Travel Guide</p></a>
+                            <a href="images/Getting_to_Pilani.pdf"><p >Travel Guide</p></a>
                         </div>
                         <div class="india-travel-map">
                             <img width="540px" height="529px" src="images/india_map_travel_guide.png">
@@ -529,9 +461,9 @@
             <div class="yt-wrapper">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/4o3rWFMA1d8?si=qn_Ug1Nu5QybekHt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
-            <div style="height: 550px;" class="content-wrapper">
+            <div class="both-wrapper">
                 <div>
-                    <p>Stay and Taxi</p>
+                    <p style=" font-size: 2em;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center; color: #FB667A;">Stay and Taxi</p>
                     <div class="stay-taxi-wrapper">
                         <div class="stay-wrapper">
                             <div class="button-wrapper">
@@ -551,7 +483,7 @@
             </div>
             <div class="content-wrapper">
                 <div>
-                    <p>Scholarship and Loans</p>
+                    <p style=" font-size: 2em;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center; color: #FB667A;">Scholarship and Loans</p>
                     <div class="Scholarship-wrapper">
                         <div class="button-wrapper">
                             <a href="https://universe.bits-pilani.ac.in/uploads/Goa/admissions/sections/SCHOLARSHIPS.pdf"><p>Latest Scholarship Guide</p></a>
@@ -568,13 +500,13 @@
             </div>
             <div class="content-wrapper">
                 <div>
-                    <p>Academics</p>
+                    <p style=" font-size: 2.5em;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center; color: #FB667A;">Academics</p>
                     <div>
-                        <h1>Go to the Classes!!!!!That's All</h1>
+                        <h1 style="text-align: center; font-size: 1.5em;">Go to the Classes!!!!<br>That's All</h1>
                     </div>
-                    <div class="button-wrapper">
+                    <div class="button-wrapper" id="acads-drive-button">
                         <a href="#">
-                            <p>BEST Acad DRIVE EVER</p>
+                            <p style="text-align: center;">Best Acads Drive Ever</p>
                         </a>
                     </div>
                 </div>
