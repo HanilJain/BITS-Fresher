@@ -402,7 +402,7 @@
                 <option value="">Select Iteration</option>
                 <option value="iter1">Iteration 1</option>
                 <option value="iter2">Iteration 2</option>
-                <option value="iter3">Iteration 3</option>
+                <option value="iter3" selected>Iteration 3</option>
                 <!-- <option value="iter4">Iteration 4</option>
                 <option value="iter5">Iteration 5</option>
                 <option value="iter6">Iteration 6</option> -->
@@ -917,11 +917,15 @@
             <div class="contact-button"><p>Sehaj Sharma<br>88995 85423</p></div>
         </div>
         <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            var iter1 = document.getElementById('iter1');
+            var iter2 = document.getElementById('iter2');
+            var iter3 = document.getElementById('iter3');
+
+            iter1.style.display = 'none';
+            iter2.style.display = 'none';
+            iter3.style.display = 'block';
             document.getElementById('iter-drop').addEventListener('change', function() {
-                var iter1 = document.getElementById('iter1');
-                var iter2 = document.getElementById('iter2');
-                var iter3 = document.getElementById('iter3');
-                // var iter4 = document.getElementById('iter4');
                 iter1.style.display = 'none';
                 iter2.style.display = 'none';
                 iter3.style.display = 'none';
@@ -937,6 +941,7 @@
                 //     dubaiTable.style.display = 'block';
                 // }
             });
+        });
         </script>
     </body>
 </html>
