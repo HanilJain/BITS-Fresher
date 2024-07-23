@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Hand Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            margin: 0;
+            background-color: #1F2739;
+            overflow-x: hidden;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        nav {
+            height: 100px;
+            background-color: #1F2739;
+            position: sticky;
+            top: 0;
+            border-bottom: 1.5px solid #ffffff;
+            width: 100%;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+            z-index: 4;
+        }
+
+        .links-container {
+            height: 100%;
+            width: 100%;
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: space-between; /* Space between items */
+            align-items: center; /* Center items vertically */
+            margin-bottom: 20px;
+        }
+
+        .dropdown-container {
+            flex: 1;
+            text-align: right; /* Aligns the dropdown to the right within its flex container */
+        }
+
+        .links-container a {
+            margin: 10px 30px;
+        }
+
+        nav a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #FFFFA0;
+            font-weight: bold;
+            font-size: 1.2em;
+            padding: 15px; /* Add padding to the anchor to make the hover area larger */
+        }
+
+        nav a:hover {
+            border-radius: 30px;
+            border: #003a06;
+            transition-duration: 0.3s;
+            color: #000000;
+            background-color: rgba(255, 255, 255, 0.944); /* Change this to your desired background color */
+        }
+
+        .open-sidebar-button, .close-sidebar-button {
+            display: none;
+        }
+
+        input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        #bundle {
+            display: block; /* Change this to 'block' to show the bundle table by default */
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        section {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #464343;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .dropdown-container {
+            text-align: right; /* Aligns the dropdown to the right */
+            margin-bottom: 20px;
+        }
+
+        .dropbtn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .table-container {
+            overflow-x: hidden; /* Disable horizontal scrolling */
+            padding: 0 10px; /* Padding to avoid touching edges */
+        }
+
+        table {
+            width: 100%; /* Ensure table takes full width */
+            table-layout: fixed; /* Fixed layout to make sure columns adjust to width */
+            border-collapse: collapse;
+            word-wrap: normal; /* Ensure no words are broken */
+        }
+
+        thead th, tbody td {
+            padding: 8px; /* Adjust padding for readability */
+            font-size: 0.9em; /* Reduce font size slightly */
+            word-wrap: normal; /* Ensure text wraps within cells */
+        }
+
+        thead th {
+            background-color: #007bff;
+            color: white;
+            padding: 3px;
+        }
+
+        tbody td {
+            background-color: #5f5f5f;
+            text-align: center;
+            white-space: normal; /* Prevent text from breaking */
+        }
+
+        tbody td a {
+            display: inline-block;
+        }
+
+        tbody td img.whatsapp-icon {
+            width: 32px; /* Increased size */
+            height: 32px; /* Increased size */
+        }
+
+        #custom-select {
+            display: inline-block; /* Ensures the dropdown is treated as an inline element */
+            width: 300px; /* Increase the width for a bigger dropdown */
+            margin: 0.8rem; 
+        }
+
+        #custom-select select {
+            display: block;
+            color: white;
+            padding: 10px 15px; /* Add more padding for a bigger dropdown */
+            border-radius: 10px;
+            border: none;
+            background-color: dodgerblue; /* Update color to match the background */
+            font-size: 1.2em; /* Increase font size */
+            width: 100%; /* Make the select box fill the container */
+            box-sizing: border-box;
+        }
+
+        .select-selected {
+            background-color: dodgerblue;
+            padding: 10px 15px; /* Add more padding to match the select element */
+            border-radius: 10px; 
+        }
+
+        .select-selected:after {
+            position: absolute;
+            content: "";
+            top: 14px;
+            right: 10px;
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-color: #fff transparent transparent transparent;
+        }
+
+        .select-selected.select-arrow-active:after {
+            border-color: transparent transparent #fff transparent;
+            top: 7px;
+        }
+
+        .select-items div, .select-selected {
+            color: #ffffff;
+            padding: 10px 15px; /* Add more padding for bigger items */
+            border: 1px solid transparent;
+            border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+            cursor: pointer;
+        }
+
+        .select-items {
+            position: absolute;
+            background-color: dodgerblue;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 9;
+            margin-bottom: 50px;
+        }
+
+        .select-hide {
+            display: none;
+        }
+
+        #select-items div:hover, .same-as-selected {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .checkmark {
+            color: #00ff00;
+            font-size: 1.7em; /* Increased size */
+        }
+
+        .crossmark {
+            color: #FB667A; /* Set color to match the SVG fill color */
+            font-size: 1.5em; /* Match the size of the checkmark */
+        }
+
+        table tbody td svg {
+            width: 1.5em; /* Match the size of the checkmark */
+            height: 1.5em; /* Match the size of the checkmark */
+        }
+
+        #aadhi {
+            color: #FB667A; 
+            font-size: 1.6em; 
+            text-align: center; 
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        #aadhi-wp {
+            display: inline-block; 
+            height: 32px; 
+            width: 32px;
+        }
+
+        .redirect-button {
+            background-color: dodgerblue; /* Green color for the button */
+            padding: 10px 20px;
+            color: white;          
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
+            margin-top: -20px; /* Margin to separate from other content */
+        }
+
+        .redirect-button:hover{
+            color: #403E10;
+            background-color: #FFF842;
+            box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;            transform: translate3d(6px, -6px, 0);
+            
+            transition-delay: 0s;
+            transition-duration: 0.4s;
+            transition-property: all;
+            transition-timing-function: line;
+        }
+        @media (min-width: 769px) {
+            .dropdown-container {
+                text-align: left; /* Aligns the dropdown to the left */
+                margin-bottom: 20px;
+            }
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+            .flex-container {
+                flex-direction: column; /* Switch to column layout */
+                align-items: flex-start; /* Align items to start of the container */
+            }
+
+            .dropbtn{
+                width: 100%;
+                box-sizing: border-box;
+                margin: 10px 0;
+            }
+
+            .redirect-button {
+                box-sizing: border-box;
+                width: 80%; /* Set width to 80% */
+                margin: 10px auto; /* Center the button with margin auto */
+            }
+
+
+            section {
+                width: 100%;
+                padding: 0;
+                border-radius: 0;
+                overflow-x: hidden;
+            }
+
+            #aadhi {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 800px) {
+            nav ul li {
+                margin: 10px 0px;
+                transition: 0.3s ease;
+            }
+
+            nav ul li a {
+                font-size: 0.8rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 720px) {
+            nav {
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+
+            .links-container {
+                margin-top: 0px;
+                padding-top: 0px;
+                background-color: #1F2739;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                z-index: 100;
+                width: 300px;
+                box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
+                transition: 0.75s ease-out;
+            }
+
+            nav a {
+                box-sizing: border-box;
+                height: auto;
+                width: 100%;
+                padding: 20px 30px;
+                justify-content: flex-start;
+                display: block;
+            }
+
+            .open-sidebar-button, .close-sidebar-button {
+                padding: 20px;
+                display: block;
+            }
+
+            #sidebar-active:checked ~ .links-container {
+                right: 0;
+            }
+
+            #sidebar-active:checked ~ #overlay {
+                height: 100%;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 9;
+            }
+            .dropdown-container {
+                text-align: center; /* Center dropdown in column layout */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dropdown-container {
+                width: 100%;
+                text-align: center;
+            }
+            .redirect-button {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <input type="checkbox" id="sidebar-active">
+        <label for="sidebar-active" class="open-sidebar-button">
+            <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="white"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+        </label>
+        <label id="overlay" for="sidebar-active"></label>
+        <div class="links-container">
+        <label for="sidebar-active" class="close-sidebar-button">
+            <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+        </label>
+            <a href="./index.html">Home</a>
+            <a href="./fresher.html">Fresher 2024</a>
+            <a href="#">Buy Books</a>
+            <a href="./bitsat-cutoff.html">BITSAT Cutoff Prediction</a>
+            <a href="./senior.html">Meet Your Seniors</a>
+        </div>
+    </nav>
+    <header>
+        <h1 style="color:#FFF842; font-size: 2em;">Second hand bookselling Initiative</h1>
+        <p style="color:#FB667A; font-size: 1.3em;">Directly From Your Seniors</p>
+    </header>
+    <section>
+        <div class="flex-container">
+            <div class="dropdown-container">
+                <div id="custom-select">
+                    <select id="book-drop">
+                        <!-- <option value="">Select Books</option> -->
+                        <option value="">Select Books</option>
+                        <option value="bundle">Main Bundle</option>
+                        <option value="thermo">Thermodynamics</option>
+                        <option value="es">Electrical Science</option>
+                        <option value="thomas">Mathematics - 1</option>
+                        <option value="m2">Mathematics - 2</option>
+                        <option value="meow">Mehcanics And Osc. Waves</option>
+                        <!-- <option value="iter4">Iteration 4</option>
+                        <option value="iter5">Iteration 5</option>
+                        <option value="iter6">Iteration 6</option> -->
+                    </select>
+                </div>
+            </div>
+            <button class="redirect-button" onclick="window.location.href='./fresher.html#spawn';">Go to Essential Books</button>
+        </div>
+        <div  id="bundle" style="display:none;">
+            <table class="table-container">
+                <thead>
+                    <tr>
+                        <th>Bundle Summary</th>
+                        <th>Condition</th>
+                        <th>Price</th>
+                        <th>Negotiable</th>
+                        <th>Contact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>All books including slides, notes and pyqs</td>
+                        <td>New</td>
+                        <td>7000</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919381878204" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>All necessary books with marked ques. and highlighted points + slides + notes + printed pyqs</td>
+                        <td>Decent</td>
+                        <td>3500</td>
+                        <td><svg fill="#FB667A" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                            viewBox="0 0 490 490" xml:space="preserve">
+                       <polygon points="386.813,0 245,141.812 103.188,0 0,103.188 141.813,245 0,386.812 103.187,489.999 245,348.187 386.813,490 
+                           490,386.812 348.187,244.999 490,103.187 "/>
+                       </svg></td>
+                        <td><a href="https://wa.me/918368103116" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>All textbooks (except ES) + Slides+ Notes + 22 and 23 batch evals and question papers</td>
+                        <td>Decent</td>
+                        <td>6500</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/916283081718" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>The whole package, with notes, slides and all </td>
+                        <td>Decent</td>
+                        <td>7000</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/917719669422" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>All first year books and handouts</td>
+                        <td>Decent</td>
+                        <td>5000</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919820551782" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>Complete set of books</td>
+                        <td>Decent</td>
+                        <td>5000</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/918076316199" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>All first year books + printed slides</td>
+                        <td>New</td>
+                        <td>5000</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919507637365" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>All 1st year notebooks, All text books of latest edition + ES solutions to suggested problems</td>
+                        <td>Decent</td>
+                        <td>5000</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919133444708" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>Complete set of books</td>
+                        <td>Decent</td>
+                        <td>6000</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/916367858171" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>All textbooks + notes (of someone with 9.5 CG) + slides</td>
+                        <td>Decent</td>
+                        <td>5000</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919108110257" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>CP, M1, M2, M3, Gen Chem, TRW slides + M3 and Thermo Appendix + Lab Manuals + Compre Papers</td>
+                        <td>New</td>
+                        <td>700</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/918377009366" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>All books except the workshop book</td>
+                        <td>Decent</td>
+                        <td>-</td>
+                        <td><svg fill="#FB667A" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                            viewBox="0 0 490 490" xml:space="preserve">
+                       <polygon points="386.813,0 245,141.812 103.188,0 0,103.188 141.813,245 0,386.812 103.187,489.999 245,348.187 386.813,490 
+                           490,386.812 348.187,244.999 490,103.187 "/>
+                       </svg></td>
+                        <td><a href="https://wa.me/919711051040" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>All textbooks + pyqs</td>
+                        <td>Decent</td>
+                        <td>-</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919711128773" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>All necessary textbooks + lab manuals + 2023 tut sheets + 22 and 23 batch question papers</td>
+                        <td>Decent</td>
+                        <td>6300</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919870280848" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>All textbooks except one meow + bio reference book + lab manuals + pyqs</td>
+                        <td>Decent</td>
+                        <td>6000</td>
+                        <td><svg fill="#FB667A" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                            viewBox="0 0 490 490" xml:space="preserve">
+                       <polygon points="386.813,0 245,141.812 103.188,0 0,103.188 141.813,245 0,386.812 103.187,489.999 245,348.187 386.813,490 
+                           490,386.812 348.187,244.999 490,103.187 "/>
+                       </svg></td>
+                        <td><a href="https://wa.me/917698072701" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>All necessary textbooks + pyqs + notebooks+ slides</td>
+                        <td>Decent</td>
+                        <td>5500</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/917738827057" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>Necessary textbooks + lab manuals + slides</td>
+                        <td>Decent</td>
+                        <td>5000</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/917250331399" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>Complete sem-2 Set</td>
+                        <td>Decent</td>
+                        <td>4000</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919568968520" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>All textbooks available</td>
+                        <td>Decent</td>
+                        <td>4000</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/918076164381" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>All textbooks + reference books + slides + notes+ answer-sheets (9.7 CG) </td>
+                        <td>Decent</td>
+                        <td>8000</td>
+                        <td><svg fill="#FB667A" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                            viewBox="0 0 490 490" xml:space="preserve">
+                       <polygon points="386.813,0 245,141.812 103.188,0 0,103.188 141.813,245 0,386.812 103.187,489.999 245,348.187 386.813,490 
+                           490,386.812 348.187,244.999 490,103.187 "/>
+                       </svg></td>
+                        <td><a href="https://wa.me/919638920953" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>Entire set [all 1st yr books+ manual +hand written notes]</td>
+                        <td>Decent</td>
+                        <td>6000</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/918619223778" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>Necessary Sem 1 Books + M2 and PnS Books+ Slides + Notes + Tut Sheets</td>
+                        <td>Decent</td>
+                        <td>6500</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/917338385858" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>Thermo, M1, M2 PnS Latest Edition Books + Slides + Handwritten Notes + Evals + Lab Manuals</td>
+                        <td>New</td>
+                        <td>5000</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919479935564" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>All necessary Books</td>
+                        <td>Decent</td>
+                        <td>-</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919916200578" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>1st year whole stack for singlites + lab coat + Handwritten Notes + Advice from 2 seniors</td>
+                        <td>Decent</td>
+                        <td>-</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/918766764556" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>All textbooks for 1st Year</td>
+                        <td>Decent</td>
+                        <td>5500</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919555923052" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div  id="es" style="display:none;">
+            <table class="table-container">
+                <thead>
+                    <tr>
+                        <th>Book Name</th>
+                        <th>Condition</th>
+                        <th>Price</th>
+                        <th>Negotiable</th>
+                        <th>Whatsapp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Foundations Of Electrical Engineering</td>
+                        <td>Decent</td>
+                        <td>400</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919870280848" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div  id="meow" style="display:none;">
+            <table class="table-container">
+                <thead>
+                    <tr>
+                        <th>Book Name</th>
+                        <th>Condition</th>
+                        <th>Price</th>
+                        <th>Negotiable</th>
+                        <th>Whatsapp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Kleppner Kolenkow, Tata McGraw Hill Indian ed</td>
+                        <td>Decent</td>
+                        <td>400</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919870280848" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>Kleppner Kolenkow, MIT edition </td>
+                        <td>New</td>
+                        <td>400</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919870280848" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>Vibrations and Waves, AP French</td>
+                        <td>Decent</td>
+                        <td>400</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919870280848" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div  id="thermo" style="display:none;">
+            <table class="table-container">
+                <thead>
+                    <tr>
+                        <th>Book Name</th>
+                        <th>Condition</th>
+                        <th>Price</th>
+                        <th>Negotiable</th>
+                        <th>Whatsapp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> Fundamentals of Thermodynamics (NEW CONDITION)</td>
+                        <td>New</td>
+                        <td>800</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919870280848" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>Fundamentals of thermodynamics SI version</td>
+                        <td>Decent</td>
+                        <td>300</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919870280848" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div  id="thomas" style="display:none;">
+            <table class="table-container">
+                <thead>
+                    <tr>
+                        <th>Book Name</th>
+                        <th>Condition</th>
+                        <th>Price</th>
+                        <th>Negotiable</th>
+                        <th>Whatsapp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Thomas Calculus 14th ed</td>
+                        <td>Decent</td>
+                        <td>1100</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919870280848" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>Thomas Calculus 12th ed</td>
+                        <td>Decent</td>
+                        <td>300</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919958099654" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div  id="m2" style="display:none;">
+            <table class="table-container">
+                <thead>
+                    <tr>
+                        <th>Book Name</th>
+                        <th>Condition</th>
+                        <th>Price</th>
+                        <th>Negotiable</th>
+                        <th>Whatsapp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Elementary Linear Algebra, 11th ed</td>
+                        <td>Decent</td>
+                        <td>1000</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919870280848" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>Complex variables, 8th ed</td>
+                        <td>Decent</td>
+                        <td>400</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919870280848" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                    <tr>
+                        <td>Complex variables and applications</td>
+                        <td>Decent</td>
+                        <td>200</td>
+                        <td><span class="checkmark">&#10004;</span></td>
+                        <td><a href="https://wa.me/919958099654" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon"></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <p id="aadhi">For any queries, Contact: Aadhi Imran  
+                <a href="https://wa.me/919843680090" target="_blank"><img src="Icons/whatsapp_icon.png" alt="Whatsapp" class="whatsapp-icon" id="aadhi-wp" ></a>
+            </p>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var bundle = document.getElementById('bundle');
+            var thomas = document.getElementById('thomas');
+            var es = document.getElementById('es');
+            var thermo = document.getElementById('thermo');
+            var m2 = document.getElementById('m2');
+            var meow = document.getElementById('meow');
+            
+            // Show the bundle table by default when the page loads
+            bundle.style.display = 'block';
+            thomas.style.display = 'none';
+            es.style.display = 'none';
+            thermo.style.display = 'none';
+            m2.style.display = 'none';
+            meow.style.display = 'none';
+
+            document.getElementById('book-drop').addEventListener('change', function() {
+                // Hide all tables
+                bundle.style.display = 'none';
+                thomas.style.display = 'none';
+                es.style.display = 'none';
+                thermo.style.display = 'none';
+                m2.style.display = 'none';
+                meow.style.display = 'none';
+                
+                // Show the selected table
+                if (this.value === 'bundle') {
+                    bundle.style.display = 'block';
+                } else if (this.value === 'thomas') {
+                    thomas.style.display = 'block';
+                } else if (this.value === 'thermo') {
+                    thermo.style.display = 'block';
+                }
+                else if (this.value === 'es') {
+                    es.style.display = 'block';
+                }
+                else if (this.value === 'meow') {
+                    meow.style.display = 'block';
+                }
+                else if (this.value === 'm2') {
+                    m2.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
